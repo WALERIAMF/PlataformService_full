@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlataformService.Data", "Pl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlataformService.Domain", "PlataformService.Domain\PlataformService.Domain.csproj", "{8B081A3A-5A28-4444-B1C6-3BB50B0BAED0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlataformService.Service", "PlataformService.Service\PlataformService.Service.csproj", "{3C582BC0-1138-4DBB-B0C5-ADBA8DFA3AD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlataformService.Service", "PlataformService.Service\PlataformService.Service.csproj", "{3C582BC0-1138-4DBB-B0C5-ADBA8DFA3AD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

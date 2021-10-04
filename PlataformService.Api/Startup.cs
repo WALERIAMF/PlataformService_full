@@ -19,10 +19,10 @@ namespace PlataformService.Api
         {
             Configuration = configuration;
         }
+
         public IConfiguration Configuration { get; }
 
-
-         private void RegisterServices(IServiceCollection services)
+        private void RegisterServices(IServiceCollection services)
         {
             DependencyContainer.RegisterServices(services, Configuration.GetConnectionString("PlatformsConn"), Configuration);
         }
@@ -40,28 +40,21 @@ namespace PlataformService.Api
                     .AllowCredentials()); // allow credentials
 
             });
-
             RegisterServices(services);
+
+            services.AddMvc(options =>
+                        options.SuppressAsyncSuffixInActionNames = false);
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PlataformService.Api", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PlataformService", Version = "v1" });
             });
-
-            var config = new AutoMapper.MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<PlatformEntity, PlatformModel>();
-            });
-            IMapper mapper = config.CreateMapper();
-            services.AddSingleton(mapper);
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
             app.UseCors("CorsPolicy");
 
             if (env.IsDevelopment() || env.IsStaging())
@@ -77,12 +70,8 @@ namespace PlataformService.Api
 
             }
 
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-            //    app.UseSwagger();
-            //    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PlataformService.Api v1"));
-            //}
+
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 

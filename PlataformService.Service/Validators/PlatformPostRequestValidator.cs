@@ -9,18 +9,20 @@ namespace PlataformService.Service.Validators
         public PlatformPostRequestValidator()
         {
             RuleFor(x => x.Name)
-                .NotNull()
-                .NotEmpty()
-                .WithMessage("É necessário informar o Nome.")
-                .MinimumLength(3).WithMessage("Informar um nome maior")
-                .MaximumLength(100).WithMessage("Nome muito grande");
+                              .NotNull()
+                              .WithMessage("É necessário informar o Nome.")
+                              .NotEmpty()
+                              .WithMessage("É necessário informar o Nome.")
+                              .MinimumLength(3).WithMessage("Informar um nome maior")
+                              .MaximumLength(100).WithMessage("Nome muito grande");
 
             RuleFor(x => x.Publisher)
-                .NotNull()
-                .NotEmpty()
-                .WithMessage("É necessário informar o editor.")
-                .MinimumLength(3).WithMessage("Nome da editora muito curta")
-                .MaximumLength(100).WithMessage("Nome da editora muito grande");
+                    .NotNull()
+                    .WithMessage("É necessário informar o editor.")
+                    .NotEmpty()
+                    .WithMessage("É necessário informar o editor.")
+                    .MinimumLength(3).WithMessage("Nome da editora muito curta")
+                    .MaximumLength(100).WithMessage("Nome da editora muito grande");
         }
     }
 }

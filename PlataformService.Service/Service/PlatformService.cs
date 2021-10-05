@@ -126,7 +126,7 @@ namespace PlataformService.Service.Service
                 platformBanco.Cost = platformOrigem.Cost;
 
                 _unitOfWork.PlatformRepository.Update(platformBanco);
-                _unitOfWork.CommitAsync();
+                _unitOfWork.Commit();
             }
             catch (Exception ex)
             {

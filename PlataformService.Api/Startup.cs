@@ -53,8 +53,6 @@ namespace PlataformService.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PlataformService", Version = "v1" });
             });
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

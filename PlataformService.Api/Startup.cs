@@ -47,7 +47,7 @@ namespace PlataformService.Api
             RegisterServices(services);
 
             services.AddControllers().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<Startup>());
-
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddMvc(options =>
                         options.SuppressAsyncSuffixInActionNames = false);

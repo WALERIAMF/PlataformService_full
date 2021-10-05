@@ -1,4 +1,3 @@
-using AutoMapper;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,12 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using PlataformService.Data.Context;
-using PlataformService.Data.Entity;
 using PlataformService.Data.IoC;
-using PlataformService.Domain.Model;
 using System;
-using System.IO;
-using System.Reflection;
 
 namespace PlataformService.Api
 {

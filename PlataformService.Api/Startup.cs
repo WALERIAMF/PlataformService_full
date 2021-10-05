@@ -1,4 +1,5 @@
 using AutoMapper;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,9 @@ using PlataformService.Data.Context;
 using PlataformService.Data.Entity;
 using PlataformService.Data.IoC;
 using PlataformService.Domain.Model;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace PlataformService.Api
 {
@@ -42,14 +46,20 @@ namespace PlataformService.Api
             });
             RegisterServices(services);
 
+            services.AddControllers().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<Startup>());
+
+
             services.AddMvc(options =>
                         options.SuppressAsyncSuffixInActionNames = false);
 
             services.AddControllers();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PlataformService", Version = "v1" });
             });
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,16 +77,11 @@ namespace PlataformService.Api
 
                 if (env.IsStaging())
                     app.UseSwaggerUI(c => c.SwaggerEndpoint("v1/swagger.json", "PlataformService.Api v1"));
-
             }
 
-
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

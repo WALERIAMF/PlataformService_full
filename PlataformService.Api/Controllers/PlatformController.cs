@@ -55,6 +55,7 @@ namespace PlataformService.Api.Controllers
         [HttpPut]
         public async Task<IActionResult> Put(PlatformPutRequest request)
         {
+
             await _service.PutPlatform(request);
             return Ok();
         }
